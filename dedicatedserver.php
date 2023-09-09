@@ -41,7 +41,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 	    <tr>
 	    <td><b>VNC Server:</b></td>
-	    <td>' . $notesLines[0] '</td>
+	    <td>' . $notesLines[0] . '</td>
 	    </tr>
 
 	    <tr>
