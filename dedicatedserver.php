@@ -30,12 +30,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
       if ($adminNotes) {
           // Memisahkan admin notes menjadi baris-baris
           $notesLines = explode("\n", $adminNotes);
-          return $notesLines;
-      } else {
-          return "Admin Notes tidak ditemukan untuk produk dengan ID " . $productId;
       }
-} catch (Exception $e) {
-    echo "Terjadi kesalahan: " . $e->getMessage();
 }
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
@@ -44,7 +39,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 	    <tr>
 	    <td><b>VNC Server:</b></td>
-	    <td></td>
+	    <td>' . $notesLines[0] . '</td>
 	    </tr>
 
 	    <tr>
