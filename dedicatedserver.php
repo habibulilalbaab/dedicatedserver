@@ -46,12 +46,12 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 	    <tr>
 	    <td><b>VNC Port:</b></td>
-	    <td>' . $params['serviceid'] . '</td>
+	    <td>' . $notesLines[1] . '</td>
 	    </tr>
 
 	    <tr>
 	    <td><b>VNC Password:</b></td>
-	    <td>' . $params['serviceid'] . '</td>
+	    <td>' . $notesLines[2] . '</td>
 	    </tr>
 	    
 	    <tr>
@@ -61,12 +61,12 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	    
 	    <tr>
 	    <td><b>NoVNC User:</b></td>
-	    <td>' . $params['serviceid'] . '</td>
+	    <td>' . $params['serviceid'] . ' (random generated)</td>
 	    </tr>
 		
 	    <tr>
 	    <td><b>NoVNC Password:</b></td>
-	    <td>' . $params['serviceid'] . '</td>
+	    <td>' . $params['serviceid'] . ' (random generated)</td>
 	    </tr>
 	    
 	    <tr>
