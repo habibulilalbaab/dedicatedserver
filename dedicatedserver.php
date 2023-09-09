@@ -3,10 +3,7 @@ use WHMCS\Database\Capsule;
 
 function dedicatedserver_MetaData(){
   return array(
-      'DisplayName' => 'Natanetwork - Dedicated Server',
-      'Hooks' => array(
-            'AdminProductConfigFields' => 1
-        ),
+      'DisplayName' => 'Natanetwork - Dedicated Server'
   );
 }
 
@@ -39,6 +36,11 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	    <tr>
 	    <td><b>VNC Password:</b></td>
 	    <td>' . $params['serviceid'] . '</td>
+	    </tr>
+	    
+	    <tr>
+	    <td>==========</td>
+	    <td><td>
 	    </tr>
 	    
 	    <tr>
