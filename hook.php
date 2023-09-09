@@ -1,4 +1,4 @@
-function hook_adminproductconfigfields($params)
+function hook_AdminProductConfigFields($params)
 {
     // Mengambil nilai-nilai dari kolom-kolom yang telah disimpan
     $vnc_ip = "1.1.1.1";

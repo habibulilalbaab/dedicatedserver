@@ -3,7 +3,10 @@ use WHMCS\Database\Capsule;
 
 function dedicatedserver_MetaData(){
   return array(
-      'DisplayName' => 'Natanetwork - Dedicated Server'
+      'DisplayName' => 'Natanetwork - Dedicated Server',
+      'Hooks' => array(
+            'AdminProductConfigFields' => 1
+        ),
   );
 }
 
