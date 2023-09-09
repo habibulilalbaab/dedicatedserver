@@ -21,7 +21,6 @@ function dedicatedserver_ClientArea($params) {
 }
 
 function dedicatedserver_AdminServicesTabFields($params) {
-  try {
       // Mendapatkan admin notes untuk produk dengan ID tertentu
       $adminNotes = Capsule::table('tblhosting')
           ->where('id', $params['serviceid'])
@@ -31,7 +30,6 @@ function dedicatedserver_AdminServicesTabFields($params) {
           // Memisahkan admin notes menjadi baris-baris
           $notesLines = explode("\n", $adminNotes);
       }
-}
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
         'Connection information' =>
@@ -39,7 +37,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 	    <tr>
 	    <td><b>VNC Server:</b></td>
-	    <td>' . $notesLines[0] . '</td>
+	    <td>' . $notesLines[0] ?? "0.0.0.0" . '</td>
 	    </tr>
 
 	    <tr>
