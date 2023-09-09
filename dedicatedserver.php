@@ -19,39 +19,35 @@ function dedicatedserver_ClientArea($params) {
 
 function dedicatedserver_AdminServicesTabFields($params) {
     $fieldsarray = array(
-        'API Connection Status' => '<div class="successbox">API Connection OK</div>',
+        'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
         'Connection information' =>
 	    '<table style="width:30%">
 
 	    <tr>
-	    <td><b>Comment:</b></td>
-	    <td>' . $params['id'] . '</td>
+	    <td><b>VNC Server:</b></td>
+	    <td>' . $params['serviceid'] . '</td>
 	    </tr>
 
 	    <tr>
-	    <td><b>Service:</b></td>
-	    <td>' . $params['id'] . '</td>
+	    <td><b>VNC Port:</b></td>
+	    <td>' . $params['serviceid'] . '</td>
 	    </tr>
 
 	    <tr>
-	    <td><b>Name:</b></td>
-	    <td>' . $params['id'] . '</td>
+	    <td><b>VNC Password:</b></td>
+	    <td>' . $params['serviceid'] . '</td>
 	    </tr>
 	    
 	    <tr>
-	    <td><b>Caller-id:</b></td>
-	    <td>' . $params['id'] . '</td>
+	    <td><b>NoVNC User:</b></td>
+	    <td>' . $params['serviceid'] . '</td>
 	    </tr>
 		
 	    <tr>
-	    <td><b>Address:</b></td>
-	    <td>' . $params['id'] . '</td>
+	    <td><b>NoVNC Password:</b></td>
+	    <td>' . $params['serviceid'] . '</td>
 	    </tr>
 
-	    <tr>
-	    <td><b>Uptime:</b></td>
-	    <td>' . $params['id'] . '</td>
-	    </tr>
 	    </table>'
     );
   return $fieldsarray;
