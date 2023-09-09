@@ -52,6 +52,11 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	    <td><b>NoVNC Password:</b></td>
 	    <td>' . $params['serviceid'] . '</td>
 	    </tr>
+	    
+	    <tr>
+	    <td><b>NoVNC Access:</b></td>
+	    <td><a href="#" class="btn btn-primary">NoVNC Console</a></td>
+	    </tr>
 
 	    </table>'
     );
