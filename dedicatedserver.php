@@ -54,7 +54,6 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	    </tr>
 	    </table>'
     );
-  }
   return $fieldsarray;
 }
 ?>
