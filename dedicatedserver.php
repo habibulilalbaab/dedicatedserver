@@ -20,7 +20,7 @@ function dedicatedserver_ClientArea($params) {
   );
 }
 
-function dedicatedserver_AdminServicesTabFields() {
+function dedicatedserver_AdminServicesTabFields($params) {
   try {
       // Mendapatkan admin notes untuk produk dengan ID tertentu
       $adminNotes = Capsule::table('tblhosting')
@@ -44,7 +44,7 @@ function dedicatedserver_AdminServicesTabFields() {
 
 	    <tr>
 	    <td><b>VNC Server:</b></td>
-	    <td>' . dedicatedserver_AdminServicesTabFields() ?? "0.0.0.0" . '</td>
+	    <td>' . dedicatedserver_AdminServicesTabFields($params) ?? "0.0.0.0" . '</td>
 	    </tr>
 
 	    <tr>
