@@ -1,6 +1,10 @@
 <?php
 use WHMCS\Database\Capsule;
 
+if (!defined("WHMCS")) {
+    die("This file cannot be accessed directly");
+}
+
 function dedicatedserver_MetaData(){
   return array(
       'DisplayName' => 'Natanetwork - Dedicated Server'
@@ -16,8 +20,23 @@ function dedicatedserver_ClientArea($params) {
   );
 }
 
-
-function dedicatedserver_AdminServicesTabFields($params) {
+function dedicatedserver_AdminServicesTabFields() {
+  try {
+      // Mendapatkan admin notes untuk produk dengan ID tertentu
+      $adminNotes = Capsule::table('tblhosting')
+          ->where('id', $params['serviceid'])
+          ->value('notes');
+  
+      if ($adminNotes) {
+          // Memisahkan admin notes menjadi baris-baris
+          $notesLines = explode("\n", $adminNotes);
+          return $notesLines;
+      } else {
+          return "Admin Notes tidak ditemukan untuk produk dengan ID " . $productId;
+      }
+} catch (Exception $e) {
+    echo "Terjadi kesalahan: " . $e->getMessage();
+}
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
         'Connection information' =>
@@ -25,7 +44,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 	    <tr>
 	    <td><b>VNC Server:</b></td>
-	    <td>' . $params['serviceid'] . '</td>
+	    <td>' . dedicatedserver_AdminServicesTabFields() ?? "0.0.0.0" . '</td>
 	    </tr>
 
 	    <tr>
@@ -55,7 +74,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	    
 	    <tr>
 	    <td><b>NoVNC Access:</b></td>
-	    <td><a href="#" class="btn btn-primary">NoVNC Console</a></td>
+	    <td><a href="https://username@password:haruna01:6080/vnc.html?host=Haruna01&port=6080" class="btn btn-primary">NoVNC Console</a></td>
 	    </tr>
 
 	    </table>'
