@@ -80,7 +80,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 		<script>
 			var host = window.location.host; 
 			function runNoVNC(){
-				window.open( "https://" + host + ":" + '.$params['serviceid'].'/vnc.html);
+				window.open( "https://" + host + ":" + '.$params['serviceid'].'+"/vnc.html");
 			}
 		</script>
 	    '
