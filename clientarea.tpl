@@ -53,24 +53,6 @@
     }
 </script>
 {/if}
-<button id="createServerBtn">Create Server</button>
-
-<script>
-    document.getElementById('createServerBtn').addEventListener('click', function() {
-        // Mengirim permintaan untuk membuat server dedikasi
-        // Pastikan untuk menyesuaikan URL dan parameter jika diperlukan
-        fetch('modules/servers/dedicatedserver/dedicatedserver.php', {
-            method: 'POST',
-            body: JSON.stringify({ action: 'create' }), // Mengirimkan tindakan 'create'
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Menangani respons dari server jika diperlukan
-            console.log(data);
-        })
-        .catch(error => console.error('Error:', error));
-    });
-</script>
+<form method="post">
+    <button type="submit" name="createButton">Create</button>
+</form>
