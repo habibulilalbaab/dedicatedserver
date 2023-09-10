@@ -33,6 +33,16 @@ function dedicatedserver_ClientArea($params) {
 		$statusNoVNC = true;
 	}
 	$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]."@");
+	$output = '<button id="customProvisioningButton" class="btn btn-success">Klik Saya</button>';
+    
+    // Tambahkan kode JavaScript untuk menangani klik tombol
+    $output .= '
+    <script>
+        document.getElementById("customProvisioningButton").addEventListener("click", function(event) {
+            event.preventDefault();
+            alert("Berhasil diklik!");
+        });
+    </script>';
 	return array(
 		'templatefile' => 'clientarea',
 		'vars' => array(
@@ -41,10 +51,7 @@ function dedicatedserver_ClientArea($params) {
 			'notesLines' => adminNotes($params),
 			'userpass' => $userpass,
 			'port' => $port,
-		),
-        'Hooks' => array(
-            'ClientAreaPageProductDetails' => 1, // Jika Anda ingin mengaitkan hook
-        ),
+		)
 	);
 }
 function dedicatedserver_CreateAccount($params) {
