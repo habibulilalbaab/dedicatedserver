@@ -114,7 +114,7 @@ function dedicatedserver_ClientAreaCustomButtonArray()
 {
     return array(
 		'Start NoVNC' => 'startNoVNC',
-		'Reboot NoVNC' => 'rebootNoVNC',
+		//'Reboot NoVNC' => 'rebootNoVNC',
 		'Stop NoVNC' => 'stopNoVNC',
     );
 }
