@@ -215,19 +215,9 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	}
   return $fieldsarray;
 }
-function my_custom_function($params) {
-    // Logika untuk menjalankan fungsi yang Anda inginkan di sini
-
-    // Contoh: Mengembalikan pesan sukses
-    return array(
-        'result' => 'success',
-        'message' => 'Fungsi berhasil dijalankan',
-    );
-}
-
-if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'customFunction') {
-    $response = my_custom_function($params); // Panggil fungsi yang sesuai
-    echo json_encode($response);
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'startNoVNC') {
+    $startNoVNC = dedicatedserver_startNoVNC($params);
+    echo json_encode($startNoVNC);
     exit;
 }
 

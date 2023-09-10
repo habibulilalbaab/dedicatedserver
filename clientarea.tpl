@@ -53,16 +53,16 @@
     }
 </script>
 {/if}
-<button id="customProvisioningButton" class="btn btn-success">Klik Saya</button>
+<button id="startNoVNC" class="btn btn-success">Klik Saya</button>
 
 <script>
-    document.getElementById("customProvisioningButton").addEventListener("click", function(event) {
+    document.getElementById("startNoVNC").addEventListener("click", function(event) {
         event.preventDefault();
         // Lakukan panggilan AJAX ke fungsi di dedicatedserver.php
-        executeDSModuleFunction();
+        executeRunNoVNC();
     });
 
-    function executeDSModuleFunction() {
+    function executeRunNoVNC() {
         // Lakukan panggilan AJAX
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "modules/servers/dedicatedserver/dedicatedserver.php", true);
@@ -71,12 +71,12 @@
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
                 if (response.result === "success") {
-                    alert("Fungsi berhasil dijalankan!");
+                    window.location.href = window.location.href;
                 } else {
                     alert("Terjadi kesalahan: " + response.message);
                 }
             }
         };
-        xhr.send("action=customFunction");
+        xhr.send("action=startNoVNC");
     }
 </script>
