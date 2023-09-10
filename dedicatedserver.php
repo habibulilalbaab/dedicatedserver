@@ -81,8 +81,8 @@ function dedicatedserver_AdminServicesTabFields($params) {
 		</table>
 		<script>
 			function runNoVNC(){
-				window.open( "https://" + window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
-				alert( "https://" + window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
+				window.open( "https://" + '.$userpass.' + window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
+				alert( "https://"  + '.$userpass.' + window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
 			}
 		</script>
 	    '
