@@ -63,12 +63,12 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 			<tr>
 				<td><b>NoVNC User:</b></td>
-				<td>' . $params['serviceid'] . '</td>
+				<td>' . $notesLines[3] . '</td>
 			</tr>
 
 			<tr>
 				<td><b>NoVNC Password:</b></td>
-				<td>' . $params['serviceid'] . '</td>
+				<td>' . $notesLines[4] . '</td>
 			</tr>
 
 			<tr>
@@ -78,8 +78,9 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 		</table>
 		<script>
+			var host = window.location.host; 
 			function runNoVNC(){
-				alert("ok")
+				window.open( "https://" + host + ":" + '.$params['serviceid'].'/vnc.html);
 			}
 		</script>
 	    '
