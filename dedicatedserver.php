@@ -21,7 +21,7 @@ function dedicatedserver_ClientArea($params) {
 }
 
 function dedicatedserver_startNoVNC($params) {
-	shell_exec('cd ../modules/servers/dedicatedserver && ./novnc/utils/novnc_proxy  --listen 1111 --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password &');
+	shell_exec('cd ../modules/servers/dedicatedserver && nohup ./novnc/utils/novnc_proxy  --listen 1111 --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password  > /dev/null 2>&1 &');
 	return 'success';
 }
 function dedicatedserver_stopNoVNC($params) {	
@@ -55,11 +55,6 @@ function dedicatedserver_AdminServicesTabFields($params) {
 }
 
 	$userpass = str_replace(array("\n", "\r"), '', $notesLines[3].":".$notesLines[4]."@");
-	// ./novnc/utils/novnc_proxy --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password --listen 1111
-	// $status = shell_exec('ping -c1 google.com');
-	// if (str_contains($output, '0% packet loss')) {
-	// 	echo "OK";
-	// }
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
         'Connection information' =>
@@ -106,7 +101,6 @@ function dedicatedserver_AdminServicesTabFields($params) {
 		<script>
 			function runNoVNC(){
 				window.open( "https://'.$userpass.'" + window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
-				alert( "https://'.$userpass.'" + window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
 			}
 		</script>
 	    '
