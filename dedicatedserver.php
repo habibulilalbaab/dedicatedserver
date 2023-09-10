@@ -52,10 +52,10 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 	$userpass = str_replace(array("\n", "\r"), '', $notesLines[3].":".$notesLines[4]."@");
 	// ./novnc/utils/novnc_proxy --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password --listen 1111
-	$status = shell_exec('ping -c1 google.com');
-	if (str_contains($output, '0% packet loss')) {
-		echo "OK";
-	}
+	// $status = shell_exec('ping -c1 google.com');
+	// if (str_contains($output, '0% packet loss')) {
+	// 	echo "OK";
+	// }
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
         'Connection information' =>
