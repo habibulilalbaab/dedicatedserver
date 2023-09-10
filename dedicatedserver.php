@@ -216,7 +216,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
   return $fieldsarray;
 }
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'startNoVNC') {
-	echo json_encode(['result' => 'success', 'message' => $params]);
+	echo json_encode(['result' => 'success', 'message' => $params['serviceid']]);
 }
 
 ?>
