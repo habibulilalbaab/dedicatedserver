@@ -47,6 +47,7 @@ function dedicatedserver_startNoVNC($params) {
 }
 function dedicatedserver_stopNoVNC($params) {
 	try {	
+		$port = $params['serviceid']+1000;
 		$proccess = shell_exec("pgrep -f 'novnc_proxy --listen ".$port."'");
 		// kill
 		shell_exec("kill -9 ".$proccess);
