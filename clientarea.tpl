@@ -63,13 +63,7 @@
         xhr.setRequestHeader("Content-Type", xhr.getResponseHeader('Content-Type'));
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.result === "success") {
-                    alert("Terjadi kesalahan: " + response.message);
-                    //window.location.href = window.location.href;
-                } else {
-                    alert("Terjadi kesalahan: " + response.message);
-                }
+                alert(response);
             }
         };
         xhr.send("action=startNoVNC");
