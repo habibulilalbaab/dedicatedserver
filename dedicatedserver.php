@@ -34,8 +34,9 @@ function dedicatedserver_ClientArea($params) {
 
 function dedicatedserver_startNoVNC($params) {
 	try {
-		shell_exec("cd ../modules/servers/dedicatedserver && nohup ./novnc/utils/novnc_proxy  --listen ".$params['serviceid']." --vnc ".adminNotes($params)[0].":".adminNotes($params)[1]." --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source ".adminNotes($params)[3].":".adminNotes($params)[4]."  > /dev/null 2>&1 &");
-		return 'success';
+		$command = "cd ../modules/servers/dedicatedserver && nohup ./novnc/utils/novnc_proxy  --listen ".$params['serviceid']." --vnc ".adminNotes($params)[0].":".adminNotes($params)[1]." --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source ".adminNotes($params)[3].":".adminNotes($params)[4]."  > /dev/null 2>&1 &";
+		shell_exec($command);
+		return $command;
 	} catch (\Throwable $th) {
 		//throw $th;
 		return $th->getMessage();
