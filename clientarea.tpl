@@ -1,4 +1,6 @@
-{if $statusNoVNC}
+{if $statusNoVNC == NULL}
+<div class="alert alert-danger text-center">NoVNC Offline</div>
+{else}
 <div class="alert alert-success text-center">NoVNC Online</div>
 <table style="width:100%">
     <tr>
@@ -34,8 +36,6 @@
         window.open("https://'.$userpass.'" + window.location.host + ":" + '.$port.' + "/vnc.html");
     }
 </script>
-{else}
-<div class="alert alert-danger text-center">NoVNC Offline</div>
 {/if}
 
 
