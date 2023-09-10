@@ -170,7 +170,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 				<tr>
 					<td><b>NoVNC URL:</b></td>
-					<td>' . "https://'.$userpass.'" + window.location.host + ":"+'.$port.'+"/vnc.html" . '</td>
+					<td id="novncurl"></td>
 				</tr>
 
 				<tr>
@@ -180,6 +180,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 			</table>
 			<script>
+				document.getElementById("novncurl").innerHTML("https://'.$userpass.'" + window.location.host + ":"+'.$port.'+"/vnc.html");
 				function runNoVNC(){
 					window.open( "https://'.$userpass.'" + window.location.host + ":"+'.$port.'+"/vnc.html");
 				}
