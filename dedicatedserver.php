@@ -33,16 +33,6 @@ function dedicatedserver_ClientArea($params) {
 		$statusNoVNC = true;
 	}
 	$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]."@");
-	$output = '<button id="customProvisioningButton" class="btn btn-success">Klik Saya</button>';
-    
-    // Tambahkan kode JavaScript untuk menangani klik tombol
-    $output .= '
-    <script>
-        document.getElementById("customProvisioningButton").addEventListener("click", function(event) {
-            event.preventDefault();
-            alert("Berhasil diklik!");
-        });
-    </script>';
 	return array(
 		'templatefile' => 'clientarea',
 		'vars' => array(
@@ -225,4 +215,20 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	}
   return $fieldsarray;
 }
+function my_custom_function($params) {
+    // Logika untuk menjalankan fungsi yang Anda inginkan di sini
+
+    // Contoh: Mengembalikan pesan sukses
+    return array(
+        'result' => 'success',
+        'message' => 'Fungsi berhasil dijalankan',
+    );
+}
+
+if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'customFunction') {
+    $response = my_custom_function($params); // Panggil fungsi yang sesuai
+    echo json_encode($response);
+    exit;
+}
+
 ?>

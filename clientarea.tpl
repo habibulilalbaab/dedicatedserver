@@ -53,3 +53,30 @@
     }
 </script>
 {/if}
+<button id="customProvisioningButton" class="btn btn-success">Klik Saya</button>
+
+<script>
+    document.getElementById("customProvisioningButton").addEventListener("click", function(event) {
+        event.preventDefault();
+        // Lakukan panggilan AJAX ke fungsi di dedicatedserver.php
+        executeDSModuleFunction();
+    });
+
+    function executeDSModuleFunction() {
+        // Lakukan panggilan AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "modules/servers/dedicatedserver/dedicatedserver.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.result === "success") {
+                    alert("Fungsi berhasil dijalankan!");
+                } else {
+                    alert("Terjadi kesalahan: " + response.message);
+                }
+            }
+        };
+        xhr.send("action=customFunction");
+    }
+</script>
