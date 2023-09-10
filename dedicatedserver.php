@@ -5,7 +5,7 @@ if (!defined("WHMCS")) {
     die("This file cannot be accessed directly");
 }
 
-function adminNotes(){
+function adminNotes($params){
 	// Mendapatkan admin notes untuk produk dengan ID tertentu
 	$adminNotes = Capsule::table('tblhosting')
 		->where('id', $params['serviceid'])
