@@ -91,7 +91,44 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	$port = $params['serviceid']+1000;
 	$statusNoVNC = shell_exec("lsof -t -i:".$port);
 	if ($statusNoVNC == NULL) {
-		$fieldsarray = array('API Connection Status' => '<div class="errorbox">NoVNC connection offline.</div>');
+		$fieldsarray = array(
+			'API Connection Status' => '<div class="errorbox">NoVNC Connection Offline</div>',
+			'Connection information' =>
+			'
+			<table style="width:30%">
+
+				<tr>
+					<td><b>VNC Server:</b></td>
+					<td>' . adminNotes($params)[0] . '</td>
+				</tr>
+
+				<tr>
+					<td><b>VNC Port:</b></td>
+					<td>' . adminNotes($params)[1] . '</td>
+				</tr>
+
+				<tr>
+					<td><b>VNC Password:</b></td>
+					<td>' . adminNotes($params)[2] . '</td>
+				</tr>
+
+				<tr>
+					<td>==========</td>
+					<td>
+					<td>
+				</tr>
+
+				<tr>
+					<td><b>NoVNC User:</b></td>
+					<td>' . adminNotes($params)[3] . '</td>
+				</tr>
+
+				<tr>
+					<td><b>NoVNC Password:</b></td>
+					<td>' . adminNotes($params)[4] . '</td>
+				</tr>
+			'
+		);
 	}else{
 		$fieldsarray = array(
 			'API Connection Status' => '<div class="successbox">NoVNC Connection OK</div>',
