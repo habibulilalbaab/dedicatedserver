@@ -1,6 +1,19 @@
-{if $statusNoVNC}{$statusNoVNC}{else}{/if}
 {if $statusNoVNC != true}
 <div class="alert alert-danger text-center">NoVNC Offline</div>
+    <tr>
+        <td><b>NoVNC User:</b></td>
+        <td>{if $notesLines[3]}{$notesLines[3]}{else}-{/if}</td>
+    </tr>
+
+    <tr>
+        <td><b>NoVNC Password:</b></td>
+        <td>{if $notesLines[4]}{$notesLines[4]}{else}-{/if}</td>
+    </tr>
+
+    <tr>
+        <td><b>VNC Password:</b></td>
+        <td>{if $notesLines[2]}{$notesLines[2]}{else}-{/if}</td>
+    </tr>
 {else}
 <div class="alert alert-success text-center">NoVNC Online</div>
 <table style="width:100%">
