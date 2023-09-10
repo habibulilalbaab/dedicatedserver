@@ -53,7 +53,7 @@
     }
 </script>
 {/if}
-<button id="startNoVNC" class="btn btn-success">Klik Saya</button>
+<button id="startNoVNC" class="btn btn-success">Start NoVNC</button>
 
 <script>
     document.getElementById("startNoVNC").addEventListener("click", function(event) {
@@ -71,7 +71,7 @@
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
                 if (response.result === "success") {
-                    alert("ok");
+                    window.location.href = window.location.href;
                 } else {
                     alert("Terjadi kesalahan: " + response.message);
                 }

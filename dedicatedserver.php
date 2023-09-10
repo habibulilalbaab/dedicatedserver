@@ -218,7 +218,6 @@ function dedicatedserver_AdminServicesTabFields($params) {
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'startNoVNC') {
     $startNoVNC = dedicatedserver_startNoVNC($params);
     echo json_encode($startNoVNC);
-    exit;
 }
 
 ?>
