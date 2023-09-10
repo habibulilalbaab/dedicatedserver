@@ -4,9 +4,9 @@
 
 use WHMCS\Database\Capsule;
 
-// if (!defined("WHMCS")) {
-//     die("This file cannot be accessed directly");
-// }
+if (!defined("WHMCS")) {
+    die("This file cannot be accessed directly");
+}
 
 function adminNotes($params){
 	// Mendapatkan admin notes untuk produk dengan ID tertentu
@@ -215,8 +215,16 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	}
   return $fieldsarray;
 }
-if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'startNoVNC') {
-	echo json_encode(['result' => 'success', 'message' => "ok"]);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $requestData = json_decode(file_get_contents('php://input'), true);
+
+    if ($requestData['action'] === 'create') {
+        // Panggil fungsi createDedicatedServer
+        $result = dedicatedserver_startNoVNC($params);
+        echo json_encode(['success' => $result]);
+        exit;
+    }
 }
 
 ?>

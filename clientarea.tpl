@@ -53,25 +53,24 @@
     }
 </script>
 {/if}
-<button onclick="executeRunNoVNC()" class="btn btn-success">Start NoVNC</button>
+<button id="createServerBtn">Create Server</button>
 
 <script>
-    function executeRunNoVNC() {
-        // Lakukan panggilan AJAX
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "modules/servers/dedicatedserver/dedicatedserver.php", true);
-        xhr.setRequestHeader("Content-Type", xhr.getResponseHeader('Content-Type'));
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.result === "success") {
-                    alert("Terjadi kesalahan: " + response.message);
-                    //window.location.href = window.location.href;
-                } else {
-                    alert("Terjadi kesalahan: " + response.message);
-                }
+    document.getElementById('createServerBtn').addEventListener('click', function() {
+        // Mengirim permintaan untuk membuat server dedikasi
+        // Pastikan untuk menyesuaikan URL dan parameter jika diperlukan
+        fetch('modules/servers/dedicatedserver/dedicatedserver.php', {
+            method: 'POST',
+            body: JSON.stringify({ action: 'create' }), // Mengirimkan tindakan 'create'
+            headers: {
+                'Content-Type': 'application/json'
             }
-        };
-        xhr.send("action=startNoVNC");
-    }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Menangani respons dari server jika diperlukan
+            console.log(data);
+        })
+        .catch(error => console.error('Error:', error));
+    });
 </script>
