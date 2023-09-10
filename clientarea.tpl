@@ -71,7 +71,8 @@
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
                 if (response.result === "success") {
-                    window.location.href = window.location.href;
+                    alert("Terjadi kesalahan: " + response.message);
+                    //window.location.href = window.location.href;
                 } else {
                     alert("Terjadi kesalahan: " + response.message);
                 }
