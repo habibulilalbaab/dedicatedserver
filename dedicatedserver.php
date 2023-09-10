@@ -38,7 +38,7 @@ function dedicatedserver_startNoVNC($params) {
 		$vncserver = str_replace(array("\n", "\r"), '', adminNotes($params)[0].":".adminNotes($params)[1]);
 		$command = "cd ../modules/servers/dedicatedserver && nohup ./novnc/utils/novnc_proxy  --listen ".$params['serviceid']." --vnc ".$vncserver." --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source ".$userpass."  > /dev/null 2>&1 &";
 		shell_exec($command);
-		return 'success';
+		return $command;
 	} catch (\Throwable $th) {
 		//throw $th;
 		return $th->getMessage();
