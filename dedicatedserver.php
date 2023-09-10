@@ -44,27 +44,6 @@ function dedicatedserver_ClientArea($params) {
 		)
 	);
 }
-function dedicatedserver_CreateAccount($params) {
-	$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-	$usernameLength = 8; // Panjang username yang diinginkan
-	$passwordLength = 12; // Panjang username yang diinginkan
-	$username = '';
-	$password = '';
-
-	for ($i = 0; $i < $usernameLength; $i++) {
-		$randomChar = $characters[rand(0, strlen($characters) - 1)];
-		$username .= $randomChar;
-	}
-	for ($i = 0; $i < $passwordLength; $i++) {
-		$randomChar = $characters[rand(0, strlen($characters) - 1)];
-		$password .= $randomChar;
-	}
-	$notes = "0.0.0.0\n5900\n0000\n".$username."\n".$password;
-	Capsule::table('tblhosting')
-        ->where('id', $params['serviceid'])
-        ->update(['notes' => $notes]);
-	return 'success';
-}
 function dedicatedserver_startNoVNC($params) {
 	try {
 		$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]);
@@ -101,7 +80,29 @@ function dedicatedserver_rebootNoVNC($params) {
 		return $th->getMessage();
 	}
 }
-  
+
+function dedicatedserver_CreateAccount($params) {
+	dedicatedserver_stopNoVNC($params);
+	$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	$usernameLength = 8; // Panjang username yang diinginkan
+	$passwordLength = 12; // Panjang username yang diinginkan
+	$username = '';
+	$password = '';
+
+	for ($i = 0; $i < $usernameLength; $i++) {
+		$randomChar = $characters[rand(0, strlen($characters) - 1)];
+		$username .= $randomChar;
+	}
+	for ($i = 0; $i < $passwordLength; $i++) {
+		$randomChar = $characters[rand(0, strlen($characters) - 1)];
+		$password .= $randomChar;
+	}
+	$notes = "0.0.0.0\n5900\n0000\n".$username."\n".$password;
+	Capsule::table('tblhosting')
+        ->where('id', $params['serviceid'])
+        ->update(['notes' => $notes]);
+	return 'success';
+}
 function dedicatedserver_AdminCustomButtonArray() {
 	$buttonarray = array(
 		'Start NoVNC' => 'startNoVNC',
