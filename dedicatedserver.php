@@ -34,7 +34,7 @@ function dedicatedserver_ClientArea($params) {
 function dedicatedserver_CreateAccount($params) {
 	$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 	$usernameLength = 8; // Panjang username yang diinginkan
-	$passwordLength = 8; // Panjang username yang diinginkan
+	$passwordLength = 12; // Panjang username yang diinginkan
 	$username = '';
 	$password = '';
 
@@ -50,7 +50,7 @@ function dedicatedserver_CreateAccount($params) {
 	Capsule::table('tblhosting')
         ->where('id', $params['serviceid'])
         ->update(['notes' => $notes]);
-	return array('result' => 'success', 'message' => 'Sukses setup data Server, silahkan ubah value VNC, Port dan password VNC server !');
+	return 'success';
 }
 function dedicatedserver_startNoVNC($params) {
 	try {
@@ -89,56 +89,61 @@ function dedicatedserver_AdminCustomButtonArray() {
 function dedicatedserver_AdminServicesTabFields($params) {
 	$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]."@");
 	$port = $params['serviceid']+1000;
-    $fieldsarray = array(
-        'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
-        'Connection information' =>
-	    '
-		<table style="width:30%">
+	$statusNoVNC = shell_exec("lsof -t -i:".$port);
+	if ($statusNoVNC == NULL) {
+		$fieldsarray = array('API Connection Status' => '<div class="errorbox">NoVNC connection offline.</div>');
+	}else{
+		$fieldsarray = array(
+			'API Connection Status' => '<div class="successbox">NoVNC Connection OK</div>',
+			'Connection information' =>
+			'
+			<table style="width:30%">
 
-			<tr>
-				<td><b>VNC Server:</b></td>
-				<td>' . adminNotes($params)[0] . '</td>
-			</tr>
+				<tr>
+					<td><b>VNC Server:</b></td>
+					<td>' . adminNotes($params)[0] . '</td>
+				</tr>
 
-			<tr>
-				<td><b>VNC Port:</b></td>
-				<td>' . adminNotes($params)[1] . '</td>
-			</tr>
+				<tr>
+					<td><b>VNC Port:</b></td>
+					<td>' . adminNotes($params)[1] . '</td>
+				</tr>
 
-			<tr>
-				<td><b>VNC Password:</b></td>
-				<td>' . adminNotes($params)[2] . '</td>
-			</tr>
+				<tr>
+					<td><b>VNC Password:</b></td>
+					<td>' . adminNotes($params)[2] . '</td>
+				</tr>
 
-			<tr>
-				<td>==========</td>
-				<td>
-				<td>
-			</tr>
+				<tr>
+					<td>==========</td>
+					<td>
+					<td>
+				</tr>
 
-			<tr>
-				<td><b>NoVNC User:</b></td>
-				<td>' . adminNotes($params)[3] . '</td>
-			</tr>
+				<tr>
+					<td><b>NoVNC User:</b></td>
+					<td>' . adminNotes($params)[3] . '</td>
+				</tr>
 
-			<tr>
-				<td><b>NoVNC Password:</b></td>
-				<td>' . adminNotes($params)[4] . '</td>
-			</tr>
+				<tr>
+					<td><b>NoVNC Password:</b></td>
+					<td>' . adminNotes($params)[4] . '</td>
+				</tr>
 
-			<tr>
-				<td><b>NoVNC Access:</b></td>
-				<td><button onclick="runNoVNC()" type="button" class="btn btn-primary">NoVNC Console</button></td>
-			</tr>
+				<tr>
+					<td><b>NoVNC Access:</b></td>
+					<td><button onclick="runNoVNC()" type="button" class="btn btn-primary">NoVNC Console</button></td>
+				</tr>
 
-		</table>
-		<script>
-			function runNoVNC(){
-				window.open( "https://'.$userpass.'" + window.location.host + ":"+'.$port.'+"/vnc.html");
-			}
-		</script>
-	    '
-    );
+			</table>
+			<script>
+				function runNoVNC(){
+					window.open( "https://'.$userpass.'" + window.location.host + ":"+'.$port.'+"/vnc.html");
+				}
+			</script>
+			'
+		);
+	}
   return $fieldsarray;
 }
 ?>
