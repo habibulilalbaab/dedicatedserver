@@ -7,12 +7,12 @@ if (!defined("WHMCS")) {
 
 
 // Mendapatkan admin notes untuk produk dengan ID tertentu
-$adminNotes = Capsule::table('tblhosting')
+$this->$adminNotes = Capsule::table('tblhosting')
 	->where('id', $params['serviceid'])
 	->value('notes');
-if ($adminNotes) {
+if ($this->$adminNotes) {
 	// Memisahkan admin notes menjadi baris-baris
-	$notesLines = explode("\n", $adminNotes);
+	$this->$notesLines = explode("\n", $adminNotes);
 }
 
 function dedicatedserver_MetaData(){
