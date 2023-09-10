@@ -7,6 +7,7 @@ function customButtonHook($vars) {
         // Jalankan perintah "create" di sini
         // ...
         // Redirect atau kirim respons sesuai kebutuhan Anda
+        return 'success';
     }
 }
 
