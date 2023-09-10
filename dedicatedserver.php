@@ -4,9 +4,9 @@
 
 use WHMCS\Database\Capsule;
 
-if (!defined("WHMCS")) {
-    die("This file cannot be accessed directly");
-}
+// if (!defined("WHMCS")) {
+//     die("This file cannot be accessed directly");
+// }
 
 function adminNotes($params){
 	// Mendapatkan admin notes untuk produk dengan ID tertentu
