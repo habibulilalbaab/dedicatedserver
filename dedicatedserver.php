@@ -21,13 +21,13 @@ function dedicatedserver_ClientArea($params) {
 }
 
 function dedicatedserver_startNoVNC($params) {
-	exec('cd ../modules/servers/dedicatedserver && ./novnc/utils/novnc_proxy  --listen 1111 --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password &');
+	shell_exec('cd ../modules/servers/dedicatedserver && ./novnc/utils/novnc_proxy  --listen 1111 --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password &');
 	return 'success';
 }
 function dedicatedserver_stopNoVNC($params) {	
 	$proccess = shell_exec("pgrep -f 'novnc_proxy --listen 1111'");
 	// kill
-	shell_exec("kill -9 ".$proccess." && kill $(lsof -t -i:1111)");
+	shell_exec("kill -9 ".$proccess." && kill $(lsof -i:1111) &");
 	return $proccess;
 }
   
