@@ -32,7 +32,7 @@ function dedicatedserver_ClientArea($params) {
 	$port = $params['serviceid']+1000;
 	return array(
 		'templatefile' => 'clientarea',
-		'vars' => array(
+		'data' => array(
 			'params' => $params,
 			'statusNoVNC' => $statusNoVNC,
 			'notesLines' => $notesLines,

@@ -1,4 +1,4 @@
-{$statusNoVNC}
+{$data[statusNoVNC]}
 {if $statusNoVNC == NULL}
 <div class="alert alert-danger text-center">NoVNC Offline</div>
 {else}
