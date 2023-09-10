@@ -127,6 +127,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 					<td><b>NoVNC Password:</b></td>
 					<td>' . adminNotes($params)[4] . '</td>
 				</tr>
+			</table>
 			'
 		);
 	}else{
