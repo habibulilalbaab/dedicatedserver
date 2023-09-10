@@ -63,7 +63,8 @@
         xhr.setRequestHeader("Content-Type", xhr.getResponseHeader('Content-Type'));
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                alert(response);
+                var response = JSON.parse(xhr.responseText);
+                alert(xhr.responseText)
             }
         };
         xhr.send("action=startNoVNC");
