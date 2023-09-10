@@ -28,7 +28,7 @@ function dedicatedserver_stopNoVNC($params) {
 	$pid = explode(" ", $proccess)[1];
 	// kill
 	$kill = shell_exec("kill ".$pid);
-	return success;
+	return $kill;
 }
   
 function dedicatedserver_AdminCustomButtonArray() {
