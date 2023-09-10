@@ -20,7 +20,7 @@ function dedicatedserver_ClientArea($params) {
   );
 }
 function dedicatedserver_startNoVNC($params) {
-	$status = shell_exec('pwd');
+	$status = shell_exec('cd ../modules/servers/dedicatedserver && ./novnc/utils/novnc_proxy --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password --listen 1111 &');
 	return $status;
 	return 'success';
 }
