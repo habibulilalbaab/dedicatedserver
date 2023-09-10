@@ -39,7 +39,7 @@ function dedicatedserver_startNoVNC($params) {
 		$port = $params['serviceid']+1000;
 		$command = "cd ../modules/servers/dedicatedserver && nohup ./novnc/utils/novnc_proxy  --listen ".$port." --vnc ".$vncserver." --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source ".$userpass."  > /dev/null 2>&1 &";
 		shell_exec($command);
-		return $command;
+		return 'success';
 	} catch (\Throwable $th) {
 		//throw $th;
 		return $th->getMessage();
@@ -47,10 +47,10 @@ function dedicatedserver_startNoVNC($params) {
 }
 function dedicatedserver_stopNoVNC($params) {
 	try {	
-		$proccess = shell_exec("pgrep -f 'novnc_proxy --listen ".$params['serviceid']."'");
+		$proccess = shell_exec("pgrep -f 'novnc_proxy --listen ".$port."'");
 		// kill
 		shell_exec("kill -9 ".$proccess);
-		shell_exec("kill $(lsof -t -i:".$params['serviceid'].")");
+		shell_exec("kill $(lsof -t -i:".$port.")");
 		return 'success';
 	} catch (\Throwable $th) {
 		//throw $th;
@@ -67,6 +67,7 @@ function dedicatedserver_AdminCustomButtonArray() {
 }
 function dedicatedserver_AdminServicesTabFields($params) {
 	$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]."@");
+	$port = $params['serviceid']+1000;
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
         'Connection information' =>
@@ -112,7 +113,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 		</table>
 		<script>
 			function runNoVNC(){
-				window.open( "https://'.$userpass.'" + window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
+				window.open( "https://'.$userpass.'" + window.location.host + ":"+'.$port.'+"/vnc.html");
 			}
 		</script>
 	    '
