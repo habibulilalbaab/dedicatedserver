@@ -78,10 +78,22 @@ function dedicatedserver_stopNoVNC($params) {
 		return $th->getMessage();
 	}
 }
+function dedicatedserver_rebootNoVNC($params) {
+	try {	
+		dedicatedserver_stopNoVNC($params);
+		sleep(1);
+		dedicatedserver_startNoVNC($params);
+		return 'success';
+	} catch (\Throwable $th) {
+		//throw $th;
+		return $th->getMessage();
+	}
+}
   
 function dedicatedserver_AdminCustomButtonArray() {
 	$buttonarray = array(
 		'Start NoVNC' => 'startNoVNC',
+		'Reboot NoVNC' => 'rebootNoVNC',
 		'Stop NoVNC' => 'stopNoVNC',
 	);
 	return $buttonarray;
