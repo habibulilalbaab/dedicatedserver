@@ -35,7 +35,8 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 }
 
-	$userpass = $notesLines[3].":".$notesLines[4]."@";
+	$userpass = $string = trim(preg_replace('/\s\s+/', ' ', $notesLines[3].":".$notesLines[4]."@"));
+
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
         'Connection information' =>
@@ -81,8 +82,8 @@ function dedicatedserver_AdminServicesTabFields($params) {
 		</table>
 		<script>
 			function runNoVNC(){
-				window.open( "https://" + '.$userpass.' window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
-				alert( "https://"  + '.$userpass.' window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
+				window.open( "https://" + '.$userpass.' + window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
+				alert( "https://"  + '.$userpass.' + window.location.host + ":"+'.$params['serviceid'].'+"/vnc.html");
 			}
 		</script>
 	    '
