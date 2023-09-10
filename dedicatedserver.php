@@ -169,6 +169,11 @@ function dedicatedserver_AdminServicesTabFields($params) {
 				</tr>
 
 				<tr>
+					<td><b>NoVNC URL:</b></td>
+					<td>' . "https://'.$userpass.'" + window.location.host + ":"+'.$port.'+"/vnc.html" . '</td>
+				</tr>
+
+				<tr>
 					<td><b>NoVNC Access:</b></td>
 					<td><button onclick="runNoVNC()" type="button" class="btn btn-primary">NoVNC Console</button></td>
 				</tr>
