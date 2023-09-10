@@ -93,12 +93,7 @@ function dedicatedserver_stopNoVNC($params) {
 }
 function dedicatedserver_rebootNoVNC($params) {
 	try {	
-		try {
-			dedicatedserver_stopNoVNC($params);
-		} catch (\Throwable $th) {
-			//throw $th;
-		}
-		sleep(1);
+		dedicatedserver_stopNoVNC($params);
 		dedicatedserver_startNoVNC($params);
 		return 'success';
 	} catch (\Throwable $th) {
