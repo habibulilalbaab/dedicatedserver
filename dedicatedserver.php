@@ -27,7 +27,8 @@ function dedicatedserver_startNoVNC($params) {
 function dedicatedserver_stopNoVNC($params) {	
 	$proccess = shell_exec("pgrep -f 'novnc_proxy --listen 1111'");
 	// kill
-	shell_exec("kill -9 ".$proccess." && kill $(lsof -i:1111) &");
+	shell_exec("kill -9 ".$proccess);
+	shell_exec("kill $(lsof -i:1111)");
 	return $proccess;
 }
   
