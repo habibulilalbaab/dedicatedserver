@@ -42,6 +42,9 @@ function dedicatedserver_ClientArea($params) {
 			'userpass' => $userpass,
 			'port' => $port,
 		),
+        'Hooks' => array(
+            'ClientAreaPageProductDetails' => 1, // Jika Anda ingin mengaitkan hook
+        ),
 	);
 }
 function dedicatedserver_CreateAccount($params) {
@@ -215,19 +218,4 @@ function dedicatedserver_AdminServicesTabFields($params) {
 	}
   return $fieldsarray;
 }
-
-function activate() {
-    // Daftarkan hook 'ClientAreaPage'
-    add_hook('ClientAreaPage', 1, $this->module_name . '_client_area_hook');
-    return array('status' => 'success', 'description' => 'Modul berhasil diaktifkan');
-}
-
-function module_name_client_area_hook($vars) {
-    if ($vars['filename'] === 'clientareaproductdetails' && isset($_GET['id']) && $_GET['id'] === '218') {
-        // Tambahkan tombol "Start NoVNC" dengan tautan ke fungsi dedicatedserver_startNoVNC()
-        $productId = (int) $_GET['id'];
-        echo '<a href="clientarea.php?action=start_novnc&id=' . $productId . '" class="btn btn-primary">Start NoVNC</a>';
-    }
-}
-
 ?>
