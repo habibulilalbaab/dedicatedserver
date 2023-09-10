@@ -105,14 +105,14 @@ function dedicatedserver_ClientArea($params) {
         "Start NoVNC" => "startNoVNC",
         "Restart NoVNC" => "rebootNoVNC",
         "Stop NoVNC" => "stopNoVNC",
-		'templatefile' => 'clientarea',
-		'vars' => array(
-			'params' => $params,
-			'statusNoVNC' => $statusNoVNC,
-			'notesLines' => adminNotes($params),
-			'userpass' => $userpass,
-			'port' => $port,
-		)
+		// 'templatefile' => 'clientarea',
+		// 'vars' => array(
+		// 	'params' => $params,
+		// 	'statusNoVNC' => $statusNoVNC,
+		// 	'notesLines' => adminNotes($params),
+		// 	'userpass' => $userpass,
+		// 	'port' => $port,
+		// )
 	);
 }
 function dedicatedserver_AdminServicesTabFields($params) {
