@@ -37,44 +37,52 @@ function dedicatedserver_AdminServicesTabFields($params) {
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
         'Connection information' =>
-	    '<table style="width:30%">
+	    '
+		<table style="width:30%">
 
-	    <tr>
-	    <td><b>VNC Server:</b></td>
-	    <td>' . $notesLines[0] . '</td>
-	    </tr>
+			<tr>
+				<td><b>VNC Server:</b></td>
+				<td>' . $notesLines[0] . '</td>
+			</tr>
 
-	    <tr>
-	    <td><b>VNC Port:</b></td>
-	    <td>' . $notesLines[1] . '</td>
-	    </tr>
+			<tr>
+				<td><b>VNC Port:</b></td>
+				<td>' . $notesLines[1] . '</td>
+			</tr>
 
-	    <tr>
-	    <td><b>VNC Password:</b></td>
-	    <td>' . $notesLines[2] . '</td>
-	    </tr>
-	    
-	    <tr>
-	    <td>==========</td>
-	    <td><td>
-	    </tr>
-	    
-	    <tr>
-	    <td><b>NoVNC User:</b></td>
-	    <td>' . $params['serviceid'] . ' (random generated)</td>
-	    </tr>
-		
-	    <tr>
-	    <td><b>NoVNC Password:</b></td>
-	    <td>' . $params['serviceid'] . ' (random generated)</td>
-	    </tr>
-	    
-	    <tr>
-	    <td><b>NoVNC Access:</b></td>
-	    <td><a href="https://username@password:haruna01:6080/vnc.html?host=Haruna01&port=6080" class="btn btn-primary">NoVNC Console</a></td>
-	    </tr>
+			<tr>
+				<td><b>VNC Password:</b></td>
+				<td>' . $notesLines[2] . '</td>
+			</tr>
 
-	    </table>'
+			<tr>
+				<td>==========</td>
+				<td>
+				<td>
+			</tr>
+
+			<tr>
+				<td><b>NoVNC User:</b></td>
+				<td>' . $params['serviceid'] . '</td>
+			</tr>
+
+			<tr>
+				<td><b>NoVNC Password:</b></td>
+				<td>' . $params['serviceid'] . '</td>
+			</tr>
+
+			<tr>
+				<td><b>NoVNC Access:</b></td>
+				<td><button onclick="runNoVNC()" type="button" class="btn btn-primary">NoVNC Console</button></td>
+			</tr>
+
+		</table>
+		<script>
+			function runNoVNC(){
+				alert("ok")
+			}
+		</script>
+	    '
     );
   return $fieldsarray;
 }
