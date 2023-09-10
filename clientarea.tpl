@@ -60,7 +60,7 @@
         // Lakukan panggilan AJAX
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "modules/servers/dedicatedserver/dedicatedserver.php", true);
-        xhr.setRequestHeader("Content-Type", xhr.getResponseHeader('Content-Type'););
+        xhr.setRequestHeader("Content-Type", xhr.getResponseHeader('Content-Type'));
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
