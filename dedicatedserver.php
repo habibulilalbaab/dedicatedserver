@@ -2,7 +2,8 @@
 
 // Developed by Muhammad Habib Ulil A <habib@natanetwork.co.id>
 
-use Illuminate\Database\Capsule\Manager as Capsule;
+require INC_ROOT . '/vendor/autoload.php';
+use WHMCS\Database\Capsule;
 
 // if (!defined("WHMCS")) {
 //     die("This file cannot be accessed directly");
