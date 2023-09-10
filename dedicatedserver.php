@@ -2,7 +2,7 @@
 
 // Developed by Muhammad Habib Ulil A <habib@natanetwork.co.id>
 
-use \WHMCS\Database\Capsule;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 // if (!defined("WHMCS")) {
 //     die("This file cannot be accessed directly");
