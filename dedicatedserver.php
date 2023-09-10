@@ -2,7 +2,6 @@
 
 // Developed by Muhammad Habib Ulil A <habib@natanetwork.co.id>
 
-require INC_ROOT . '/vendor/autoload.php';
 use WHMCS\Database\Capsule;
 
 // if (!defined("WHMCS")) {
@@ -217,8 +216,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
   return $fieldsarray;
 }
 if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'startNoVNC') {
-	$startNoVNC = dedicatedserver_startNoVNC($params);
-	echo json_encode(['result' => 'success', 'message' => $startNoVNC]);
+	echo json_encode(['result' => 'success', 'message' => $params]);
 }
 
 ?>
