@@ -35,7 +35,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 
 }
 
-	$userpass = trim(preg_replace('/\s\s+/', ' ', $notesLines[3].":".$notesLines[4]."@"));
+	$userpass = str_replace(array("\n", "\r"), '', $notesLines[3].":".$notesLines[4]."@");
 
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
