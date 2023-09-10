@@ -53,3 +53,4 @@
     }
 </script>
 {/if}
+<a href="clientarea.php?action=custom_action" class="btn btn-primary">My Custom Button</a>
