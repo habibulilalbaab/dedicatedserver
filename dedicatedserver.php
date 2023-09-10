@@ -24,8 +24,11 @@ function dedicatedserver_startNoVNC($params) {
 	return 'success';
 }
 function dedicatedserver_stopNoVNC($params) {	
-	$test = shell_exec("ps aux | grep -i 'novnc_proxy  --listen 1111'");
-	return $test;
+	$proccess = shell_exec("ps aux | grep -i 'novnc_proxy  --listen 1111'");
+	$pid = shell_exec(explode(" ", $proccess)[1]);
+	// kill
+	shell_exec("kill ".$pid);
+	return success;
 }
   
 function dedicatedserver_AdminCustomButtonArray() {
