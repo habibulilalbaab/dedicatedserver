@@ -1,6 +1,5 @@
 {if $params['serviceid']}{$params['serviceid']}{else}{/if}
-jijijiji
-{if $statusNoVNC == NULL}
+{if $statusNoVNC}
 <div class="alert alert-danger text-center">NoVNC Offline</div>
 {else}
 <div class="alert alert-success text-center">NoVNC Online</div>

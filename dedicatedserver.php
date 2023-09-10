@@ -28,6 +28,9 @@ function dedicatedserver_MetaData(){
 
 function dedicatedserver_ClientArea($params) {
 	$statusNoVNC = shell_exec("lsof -t -i:".$port);
+	if ($statusNoVNC != NULL) {
+		$statusNoVNC = true;
+	}
 	$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]."@");
 	$port = $params['serviceid']+1000;
 	return array(
