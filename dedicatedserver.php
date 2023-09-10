@@ -19,7 +19,20 @@ function dedicatedserver_ClientArea($params) {
       ),
   );
 }
-
+function dedicatedserver_startNoVNC($params) {	
+	return 'success';
+}
+function dedicatedserver_stopNoVNC($params) {	
+	return 'success';
+}
+  
+function dedicatedserver_AdminCustomButtonArray() {
+	$buttonarray = array(
+		'Start NoVNC' => 'startNoVNC',
+		'Stop NoVNC' => 'stopNoVNC',
+	);
+	return $buttonarray;
+}
 function dedicatedserver_AdminServicesTabFields($params) {
   try {
       // Mendapatkan admin notes untuk produk dengan ID tertentu
