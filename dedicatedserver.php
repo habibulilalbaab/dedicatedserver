@@ -47,9 +47,9 @@ function dedicatedserver_CreateAccount($params) {
 		$password .= $randomChar;
 	}
 	$notes = "0.0.0.0\n5900\n0000\n".$username."\n".$password;
-	Capsule::table('tblclients')
-        ->where('id', $clientId)
-        ->update(['adminnotes' => $notes]);
+	Capsule::table('tblhosting')
+        ->where('id', $params['serviceid'])
+        ->update(['notes' => $notes]);
 	return array('result' => 'success', 'message' => 'Sukses setup data Server, silahkan ubah value VNC, Port dan password VNC server !');
 }
 function dedicatedserver_startNoVNC($params) {
