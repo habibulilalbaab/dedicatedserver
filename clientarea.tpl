@@ -53,20 +53,14 @@
     }
 </script>
 {/if}
-<button id="startNoVNC" class="btn btn-success">Start NoVNC</button>
+<button onclick="executeRunNoVNC()" class="btn btn-success">Start NoVNC</button>
 
 <script>
-    document.getElementById("startNoVNC").addEventListener("click", function(event) {
-        event.preventDefault();
-        // Lakukan panggilan AJAX ke fungsi di dedicatedserver.php
-        executeRunNoVNC();
-    });
-
     function executeRunNoVNC() {
         // Lakukan panggilan AJAX
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "modules/servers/dedicatedserver/dedicatedserver.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader("Content-Type", xhr.getResponseHeader('Content-Type'););
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
