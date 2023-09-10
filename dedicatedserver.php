@@ -38,7 +38,7 @@ function dedicatedserver_ClientArea($params) {
 		'vars' => array(
 			'params' => $params,
 			'statusNoVNC' => $statusNoVNC,
-			'notesLines' => $notesLines,
+			'notesLines' => adminNotes($params),
 			'userpass' => $userpass,
 			'port' => $port,
 		),
