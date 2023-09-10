@@ -44,10 +44,10 @@
 
 </table>
 <script>
-    document.getElementById("novncurl").innerHTML = "https://'.{if $userpass}{$userpass}{else}{/if}.'" + window.location.host + ":" +'.$port.' + "/vnc.html";
+    document.getElementById("novncurl").innerHTML = "https://{if $userpass}{$userpass}{else}{/if}" + window.location.host + ":" +'{if $port}{$port}{else}{/if}' + "/vnc.html";
 
     function runNoVNC() {
-        window.open("https://'.{if $userpass}{$userpass}{else}{/if}.'" + window.location.host + ":" + '.{if $port}{$port}{else}{/if}.' + "/vnc.html");
+        window.open("https://{if $userpass}{$userpass}{else}{/if}" + window.location.host + ":" + '{if $port}{$port}{else}{/if}' + "/vnc.html");
     }
 </script>
 {/if}
