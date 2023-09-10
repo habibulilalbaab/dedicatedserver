@@ -1,7 +1,7 @@
 <?php
 add_hook('ClientAreaPage', 1, function($vars) {
     // Periksa apakah halaman detail layanan sedang ditampilkan
-    if ($vars['filename'] === 'clientareaproductdetails') {
+    if ($vars['action'] === 'productdetails') {
         // Ambil ID produk dari variabel WHMCS
         $productId = (int) $_GET['id'];
 
