@@ -26,27 +26,6 @@ function dedicatedserver_MetaData(){
   );
 }
 
-function dedicatedserver_ClientArea($params) {
-	$port = $params['serviceid']+1000;
-	$statusNoVNC = shell_exec("lsof -t -i:".$port);
-	if ($statusNoVNC != NULL) {
-		$statusNoVNC = true;
-	}
-	$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]."@");
-	return array(
-		'templatefile' => 'clientarea',
-		'vars' => array(
-			'params' => $params,
-			'statusNoVNC' => $statusNoVNC,
-			'notesLines' => adminNotes($params),
-			'userpass' => $userpass,
-			'port' => $port,
-		),
-		'Hooks' => array(
-            'ClientAreaPage' => 1, // Jika Anda ingin mengaitkan hook
-        ),
-	);
-}
 function dedicatedserver_CreateAccount($params) {
 	$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 	$usernameLength = 8; // Panjang username yang diinginkan
@@ -113,6 +92,28 @@ function dedicatedserver_AdminCustomButtonArray() {
 		'Stop NoVNC' => 'stopNoVNC',
 	);
 	return $buttonarray;
+}
+
+function dedicatedserver_ClientArea($params) {
+	$port = $params['serviceid']+1000;
+	$statusNoVNC = shell_exec("lsof -t -i:".$port);
+	if ($statusNoVNC != NULL) {
+		$statusNoVNC = true;
+	}
+	$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]."@");
+	return array(
+        "Start NoVNC" => "startNoVNC",
+        "Restart NoVNC" => "rebootNoVNC",
+        "Stop NoVNC" => "stopNoVNC",
+		'templatefile' => 'clientarea',
+		'vars' => array(
+			'params' => $params,
+			'statusNoVNC' => $statusNoVNC,
+			'notesLines' => adminNotes($params),
+			'userpass' => $userpass,
+			'port' => $port,
+		)
+	);
 }
 function dedicatedserver_AdminServicesTabFields($params) {
 	$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]."@");

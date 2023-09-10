@@ -53,6 +53,3 @@
     }
 </script>
 {/if}
-<form method="post">
-    <button type="submit" name="runNoVNC">Start NoVNC</button>
-</form>
