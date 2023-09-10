@@ -107,7 +107,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 			'API Connection Status' => '<div class="errorbox">NoVNC Connection Offline</div>',
 			'Connection information' =>
 			'
-			<table style="width:30%">
+			<table style="width:100%">
 
 				<tr>
 					<td><b>VNC Server:</b></td>
@@ -147,7 +147,7 @@ function dedicatedserver_AdminServicesTabFields($params) {
 			'API Connection Status' => '<div class="successbox">NoVNC Connection OK</div>',
 			'Connection information' =>
 			'
-			<table style="width:30%">
+			<table style="width:100%">
 
 				<tr>
 					<td><b>VNC Server:</b></td>
