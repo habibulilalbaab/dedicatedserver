@@ -20,8 +20,8 @@ function dedicatedserver_ClientArea($params) {
   );
 }
 function dedicatedserver_startNoVNC($params) {
-	$tes = shell_exec('cd ../modules/servers/dedicatedserver && ./novnc/utils/novnc_proxy  --listen 1111 --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password && echo "success"');
-	return $tes;
+	exec('cd ../modules/servers/dedicatedserver && ./novnc/utils/novnc_proxy  --listen 1111 --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password &');
+	return 'success';
 }
 function dedicatedserver_stopNoVNC($params) {	
 	$proccess = shell_exec("ps aux | grep -i 'novnc_proxy  --listen 1111'");
