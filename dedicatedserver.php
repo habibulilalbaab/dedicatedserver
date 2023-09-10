@@ -5,6 +5,16 @@ if (!defined("WHMCS")) {
     die("This file cannot be accessed directly");
 }
 
+
+// Mendapatkan admin notes untuk produk dengan ID tertentu
+$adminNotes = Capsule::table('tblhosting')
+	->where('id', $params['serviceid'])
+	->value('notes');
+if ($adminNotes) {
+	// Memisahkan admin notes menjadi baris-baris
+	$notesLines = explode("\n", $adminNotes);
+}
+
 function dedicatedserver_MetaData(){
   return array(
       'DisplayName' => 'Natanetwork - Dedicated Server'
@@ -21,15 +31,25 @@ function dedicatedserver_ClientArea($params) {
 }
 
 function dedicatedserver_startNoVNC($params) {
-	shell_exec('cd ../modules/servers/dedicatedserver && nohup ./novnc/utils/novnc_proxy  --listen 1111 --vnc 10.255.255.54:5909 --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source username:password  > /dev/null 2>&1 &');
-	return 'success';
+	try {
+		shell_exec('cd ../modules/servers/dedicatedserver && nohup ./novnc/utils/novnc_proxy  --listen '.$params['serviceid'].' --vnc '.$notesLines[0].':'.$notesLines[1].' --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source '.$notesLines[3].':'.$notesLines[4].'  > /dev/null 2>&1 &');
+		return 'success';
+	} catch (\Throwable $th) {
+		//throw $th;
+		return $th->getMessage();
+	}
 }
-function dedicatedserver_stopNoVNC($params) {	
-	$proccess = shell_exec("pgrep -f 'novnc_proxy --listen 1111'");
-	// kill
-	shell_exec("kill -9 ".$proccess);
-	shell_exec("kill $(lsof -t -i:1111)");
-	return $proccess;
+function dedicatedserver_stopNoVNC($params) {
+	try {	
+		$proccess = shell_exec("pgrep -f 'novnc_proxy --listen ".$params['serviceid']."'");
+		// kill
+		shell_exec("kill -9 ".$proccess);
+		shell_exec("kill $(lsof -t -i:".$params['serviceid'].")");
+		return 'success';
+	} catch (\Throwable $th) {
+		//throw $th;
+		return $th->getMessage();
+	}
 }
   
 function dedicatedserver_AdminCustomButtonArray() {
@@ -40,20 +60,6 @@ function dedicatedserver_AdminCustomButtonArray() {
 	return $buttonarray;
 }
 function dedicatedserver_AdminServicesTabFields($params) {
-  try {
-      // Mendapatkan admin notes untuk produk dengan ID tertentu
-      $adminNotes = Capsule::table('tblhosting')
-          ->where('id', $params['serviceid'])
-          ->value('notes');
-  
-      if ($adminNotes) {
-          // Memisahkan admin notes menjadi baris-baris
-          $notesLines = explode("\n", $adminNotes);
-      }
-}catch (Exception $e) {
-
-}
-
 	$userpass = str_replace(array("\n", "\r"), '', $notesLines[3].":".$notesLines[4]."@");
     $fieldsarray = array(
         'API Connection Status' => '<div class="successbox">VNC Connection OK</div>',
