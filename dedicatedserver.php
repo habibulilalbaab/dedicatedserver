@@ -1,4 +1,7 @@
 <?php
+
+// Developed by Muhammad Habib Ulil A <habib@natanetwork.co.id>
+
 use WHMCS\Database\Capsule;
 
 if (!defined("WHMCS")) {
@@ -24,12 +27,19 @@ function dedicatedserver_MetaData(){
 }
 
 function dedicatedserver_ClientArea($params) {
-  return array(
-      'templatefile' => 'clientarea',
-      'vars' => array(
-          'params'=> $params,
-      ),
-  );
+	$statusNoVNC = shell_exec("lsof -t -i:".$port);
+	$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]."@");
+	$port = $params['serviceid']+1000;
+	return array(
+		'templatefile' => 'clientarea',
+		'vars' => array(
+			'params' => $params,
+			'statusNoVNC' => $statusNoVNC,
+			'notesLines' => $notesLines,
+			'userpass' => $userpass,
+			'port' => $port,
+		),
+	);
 }
 function dedicatedserver_CreateAccount($params) {
 	$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
