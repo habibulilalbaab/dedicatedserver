@@ -114,9 +114,9 @@ function dedicatedserver_AdminCustomButtonArray() {
 function dedicatedserver_ClientAreaCustomButtonArray()
 {
     return array(
-        "Start NoVNC" => "startNoVNC",
-        "Restart NoVNC" => "rebootNoVNC",
-        "Stop NoVNC" => "stopNoVNC",
+		'Start NoVNC' => 'startNoVNC',
+		'Reboot NoVNC' => 'rebootNoVNC',
+		'Stop NoVNC' => 'stopNoVNC',
     );
 }
 function dedicatedserver_AdminServicesTabFields($params) {
