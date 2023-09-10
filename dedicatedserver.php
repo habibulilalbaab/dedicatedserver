@@ -25,7 +25,7 @@ function dedicatedserver_startNoVNC($params) {
 }
 function dedicatedserver_stopNoVNC($params) {	
 	$proccess = shell_exec("ps aux | grep -i 'novnc_proxy  --listen 1111'");
-	$pid = shell_exec(explode(" ", $proccess)[1]);
+	$pid = explode(" ", $proccess)[1];
 	// kill
 	shell_exec("kill ".$pid);
 	return success;
