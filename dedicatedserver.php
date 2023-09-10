@@ -111,7 +111,7 @@ function dedicatedserver_AdminCustomButtonArray() {
 	);
 	return $buttonarray;
 }
-function provisioningmodule_ClientAreaCustomButtonArray()
+function dedicatedserver_ClientAreaCustomButtonArray()
 {
     return array(
         "Start NoVNC" => "startNoVNC",
