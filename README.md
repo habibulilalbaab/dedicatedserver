@@ -17,6 +17,10 @@ pip install numpy
 ![image](https://github.com/habibulilalbaab/ds/assets/28334523/82a5d725-ea34-4bc0-bc8c-af04c1a57e93)
 ### Module Command
 - Create - create sample data for vnc server & NoVNC Access in **Admin Notes** (all data in admin notes will replaced)
+  
+  **!! do not remove user and password noVNC - line 4 and 5 in admin notes !!**
+
+  
 - Suspend - stop NoVNC and suspend service
 - Unsuspend - start NoVNC and unsuspend service
 - Terminate - stop NoVNC and terminate service
