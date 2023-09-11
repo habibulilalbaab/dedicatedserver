@@ -30,7 +30,7 @@ pip install numpy
 
 ## Screenshot
 ![image](https://github.com/habibulilalbaab/ds/assets/28334523/4f825be4-08e7-4714-94e1-90d98b36b4d3)
-![image](https://github.com/habibulilalbaab/ds/assets/28334523/ad9af47b-d23d-47e6-aaa9-c0ff366847ae)
-![image](https://github.com/habibulilalbaab/ds/assets/28334523/0cc0e84c-41e5-40d6-be5f-8a49800647ef)
+![image](https://github.com/habibulilalbaab/ds/assets/28334523/c319a72b-86ba-431c-8ce8-8e0c2428107a)
+![image](https://github.com/habibulilalbaab/ds/assets/28334523/1538bba4-dbf0-498b-9585-5e68f350ccf0)
 ![image](https://github.com/habibulilalbaab/ds/assets/28334523/18f43606-6b3f-4d22-a939-0247c06ef724)
 ![image](https://github.com/habibulilalbaab/ds/assets/28334523/b3b028c8-46d5-4b10-b55f-1f7e739a82f5)
