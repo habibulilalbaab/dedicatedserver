@@ -29,3 +29,4 @@ pip install numpy
 ![image](https://github.com/habibulilalbaab/ds/assets/28334523/ad9af47b-d23d-47e6-aaa9-c0ff366847ae)
 ![image](https://github.com/habibulilalbaab/ds/assets/28334523/0cc0e84c-41e5-40d6-be5f-8a49800647ef)
 ![image](https://github.com/habibulilalbaab/ds/assets/28334523/18f43606-6b3f-4d22-a939-0247c06ef724)
+![image](https://github.com/habibulilalbaab/ds/assets/28334523/b3b028c8-46d5-4b10-b55f-1f7e739a82f5)
