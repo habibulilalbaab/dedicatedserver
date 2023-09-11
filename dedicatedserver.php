@@ -103,6 +103,18 @@ function dedicatedserver_CreateAccount($params) {
         ->update(['notes' => $notes]);
 	return 'success';
 }
+function dedicatedserver_SuspendAccount($params) {
+	dedicatedserver_stopNoVNC($params);
+	return 'success';
+}
+function dedicatedserver_UnsuspendAccount($params) {
+	dedicatedserver_startNoVNC($params);
+	return 'success';
+}
+function dedicatedserver_TerminateAccount($params) {
+	dedicatedserver_stopNoVNC($params);
+	return 'success';
+}
 function dedicatedserver_AdminCustomButtonArray() {
 	$buttonarray = array(
 		'Start NoVNC' => 'startNoVNC',
