@@ -3,6 +3,8 @@
 ## System Requirements
 - Python3
 - Python module: numpy
+- pgrep
+- lsof
 
 ## Installation
 ```
