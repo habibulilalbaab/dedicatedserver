@@ -49,7 +49,7 @@ function dedicatedserver_startNoVNC($params) {
 		$userpass = str_replace(array("\n", "\r"), '', adminNotes($params)[3].":".adminNotes($params)[4]);
 		$vncserver = str_replace(array("\n", "\r"), '', adminNotes($params)[0].":".adminNotes($params)[1]);
 		$port = $params['serviceid']+1000;
-		$command = "cd ".$_SERVER['DOCUMENT_ROOT']."/modules/servers/dedicatedserver && nohup ./novnc/utils/novnc_proxy  --listen ".$port." --vnc ".$vncserver." --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source ".$userpass."  > /dev/null 2>&1 &";
+		$command = "cd ../../modules/servers/dedicatedserver && nohup ./novnc/utils/novnc_proxy  --listen ".$port." --vnc ".$vncserver." --ssl-only --heartbeat 3 --web-auth --auth-plugin BasicHTTPAuth --auth-source ".$userpass."  > /dev/null 2>&1 &";
 		shell_exec($command);
 		return $command;
 		//return 'success';
